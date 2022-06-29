@@ -1,18 +1,29 @@
 const app = Vue.createApp({
-    data() {
-        return {
-            name: 'Choi Juhwan',
-            age: 22,
-            imageUrl:'https://ichef.bbci.co.uk/news/976/cpsprodpb/C3B7/production/_123330105_gettyimages-1238389987.jpg'
-        };
-    },
-    methods: {
-        calculateAge(){
-            return this.age + 5;
-        },
-        calculateRandom(){
-            return Math.random();
-        }
-    }
+  data() {
+    return {
+      counter: 10,
+      name: '',
+      confirmedName: ''
+    };
+  },
+  methods: {
+      confirmInput(){
+        this.confirmedName = this.name;
+      },
+      submitForm(event){
+        event.preventDefault();
+        alert('submitted!');
+      },
+      increment(num){
+          this.counter = this.counter + num;
+      },
+      decrement(num){
+          this.counter = this.counter - num;
+      },
+      setName(event){
+          this.name = event.target.value;
+      }
+  }
 });
-app.mount('#assignment');
+
+app.mount('#events');
