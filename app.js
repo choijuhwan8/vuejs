@@ -1,63 +1,35 @@
 const app = Vue.createApp({
-  data() {
-    return {
-      counter: 0,
-      name: '',
-      lastname: '',
-      //fullname: ''
+  data(){
+    return{
+    counter: 0,
+    alert: ''
     };
   },
-  watch: {
-    counter(value){
-      if(value > 50){
-        const that = this;
-        setTimeout(function(){
-          that.counter = 0;
-        }, 2000);
-      }
+  methods:{
+    addNumber(num){
+      this.counter = this.counter + num;
     }
-    // name(value){
-    //   if(value === ''){
-    //     this.fullname = '';
-    //   }
-    //   else{
-    //   this.fullname = value + ' ' + this.lastname;
-    //   }
-    // },
-    // lastname(value){
-    //   if(value === ''){
-    //     this.fullname = '';
-    //   }
-    //   else{
-    //   this.fullname = this.name + ' ' + 'value';
-    //   }
-    // }
   },
   computed: {
-    fullname() {
-      console.log('running...');
-      if(this.name === '' || this.lastname === ''){
-        return '';
-      }else{
-      return this.name + ' ' + this.lastname; 
-    }
+    result(){
+      if(this.counter < 37){
+        return 'Not there yet!';
+      }
+      else if(this.counter > 37){
+        return 'Too Much';
+      }
+      else{
+        return this.counter;
+      }
     }
   },
-  methods: {
-    setName(event) {
-      this.name = event.target.value;
-    },
-    add(num) {
-      this.counter = this.counter + num;
-    },
-    reduce(num) {
-      this.counter = this.counter - num;
-      // this.counter--;
-    },
-    resetInput() {
-      this.name = '';
-    }
+  watch: {
+    result(){
+      const that = this;
+      setTimeout(function(){
+        that.counter = 0;
+      }, 5000)}
   }
 });
 
-app.mount('#events');
+app.mount('#assignment');
