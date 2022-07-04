@@ -1,35 +1,28 @@
 const app = Vue.createApp({
-  data(){
+  data() {
     return{
-    counter: 0,
-    alert: ''
+      boxASelected: false,
+      boxBSelected: false,
+      boxCSelected: false
     };
   },
-  methods:{
-    addNumber(num){
-      this.counter = this.counter + num;
+  methods: {
+    boxSelected(box){
+      if (box === 'A'){
+        this.boxASelected = !this.boxASelected;
+      } else if (box === 'B'){
+        this.boxBSelected = !this.boxBSelected;
+      } else if (box === 'C'){
+        this.boxCSelected = !this.boxCSelected;
+      }
     }
   },
   computed: {
-    result(){
-      if(this.counter < 37){
-        return 'Not there yet!';
-      }
-      else if(this.counter > 37){
-        return 'Too Much';
-      }
-      else{
-        return this.counter;
-      }
+    boxAclasses() {
+      return{ active: this.boxASelected}
     }
-  },
-  watch: {
-    result(){
-      const that = this;
-      setTimeout(function(){
-        that.counter = 0;
-      }, 5000)}
   }
+
 });
 
-app.mount('#assignment');
+app.mount('#styling')
