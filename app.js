@@ -1,24 +1,19 @@
 const app = Vue.createApp({
   data() {
-    return{
-      inputClass: '',
-      toggleClass: true,
-      inputBackgroundColor: ''
+    return {
+      enteredGoalValue: '',
+      goals: []
     };
   },
   methods: {
-    togglePara() {
-      this.togglePara = !this.togglePara;
-    }
-  },
-  computed: {
-    paraClasses(){
-      return{
-      visible: this.togglePara,
-      hidden: !this.togglePara
+    addGoal() {
+      this.goals.push(this.enteredGoalValue);
+    },
+    removeGoal(index) {
+      this.goals.splice(index, 1);
     }
   }
-  }
+  
 });
 
-app.mount('#assignment')
+app.mount('#user-goals');
